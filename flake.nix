@@ -29,16 +29,17 @@
 
         packageName = "number-of-islands-hs";
 	nvim = nixvim.legacyPackages.x86_64-linux.makeNixvim {
-   	 plugins.lsp.enable = true;
-  	};
-      in {
-#        packages.${packageName} =
-#          haskellPackages.callCabal2nix packageName self rec {
-            # Dependency overrides go here
-#          };
+	plugins.lsp.enable = true;
+      };
 
-#        packages.default = self.packages.${system}.${packageName};
-#        defaultPackage = self.packages.${system}.default;
+      in {
+        packages.${packageName} =
+          haskellPackages.callCabal2nix packageName self rec {
+            # Dependency overrides go here
+          };
+
+        packages.default = self.packages.${system}.${packageName};
+        defaultPackage = self.packages.${system}.default;
 
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
@@ -47,7 +48,7 @@
             cabal-install
             nvim
           ];
-#          inputsFrom = map (__getAttr "env") (__attrValues self.packages.${system});
+          inputsFrom = map (__getAttr "env") (__attrValues self.packages.${system});
         };
         devShell = self.devShells.${system}.default;
       });

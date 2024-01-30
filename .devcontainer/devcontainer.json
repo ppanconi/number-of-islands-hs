@@ -6,9 +6,7 @@
   },
 
   "features": {
-     "ghcr.io/devcontainers/features/nix:1": {
-	"flakeUri": "https://gitlab.haskell.org/ghc/ghc-wasm-meta/-/archive/master/ghc-wasm-meta-master.tar.gz"	
-      }
+     "ghcr.io/devcontainers-contrib/features/haskell:2": {}
   },
 
   "remoteUser": "vscode",
@@ -27,6 +25,7 @@
         "bbenoist.nix",
         "haskell.haskell",
         "s0kil.vscode-hsx",
+        "mkhl.direnv",
         "vigoo.stylish-haskell"
       ]
     }

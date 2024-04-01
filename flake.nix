@@ -28,9 +28,9 @@
           pkgs.haskell.lib.doJailbreak (pkg.overrideAttrs (_: { meta = { }; }));
 
         packageName = "number-of-islands-hs";
-	nvim = nixvim.legacyPackages.x86_64-linux.makeNixvim {
-	plugins.lsp.enable = true;
-      };
+	      nvim = nixvim.legacyPackages.x86_64-linux.makeNixvim {
+	        plugins.lsp.enable = true;
+        };
 
       in {
         packages.${packageName} =

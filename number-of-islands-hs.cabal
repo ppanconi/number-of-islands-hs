@@ -104,7 +104,7 @@ executable number-of-islands-hs
     -- Base language which the package is written in.
     default-language: GHC2021
 
-test-suite number-of-islands-hs-test
+test-suite matrix-tests
     -- Import common warning flags.
     import:           warnings
 
@@ -124,10 +124,11 @@ test-suite number-of-islands-hs-test
     hs-source-dirs:   test
 
     -- The entrypoint to the test suite.
-    main-is:          Main.hs
+    main-is: MatrixLandsTests.hs
 
     -- Test dependencies.
     build-depends:
         base ^>=4.17.2.1,
         number-of-islands-hs,
-        array
+        array,
+        HUnit

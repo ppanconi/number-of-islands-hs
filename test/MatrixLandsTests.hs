@@ -120,7 +120,7 @@ test11 = TestCase (do
                  1,0,0,1,0,0,0,1,0,0,
                  1,1,0,1,0,0,0,1,0,1]
         c <- countIslandsWithTrace m
-        assertEqual (show m ++ " should return 10") 11 c)
+        assertEqual (show m ++ " should return 10") 10 c)
 
 
 tests :: Test

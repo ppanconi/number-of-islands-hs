@@ -32,24 +32,23 @@ module VisitableLands where
                                     updateSate k
                                     return 0
             -- we exam k neighboringDistricts
-            n <- foldM exploreNeighbor n (neighboringDistricts l k)
+            n' <- foldM exploreNeighbor n (neighboringDistricts l k)
             s <- get
-            foldM exploreNeighbor n (stackedToVisit s)
-            where exploreNeighbor n' k' = do
+            foldM exploreNeighbor n' (stackedToVisit s)
+            where exploreNeighbor n'' k' = do
                     s' <- get
                     if isNotVisited s' k' then
                         if isLand l k' then do
                             exploreLand l k'
-                            return $ if isLand l k then n' else n' + 1
+                            return $ if isLand l k then n'' else n'' + 1
                         else do
                             -- _k is not a land
-                            n'' <- searchLands l k'
-                            return (n' + n'')
-                    else return n'
+                            n''' <- searchLands l k'
+                            return (n'' + n''')
+                    else return n''
 
-    updateSate :: Logbook s k => k -> State s s
+    updateSate :: Logbook s k => k -> State s ()
     updateSate k = do
         s <- get
         let s' = registerVisited s k 
         put s'
-        return s'

@@ -46,7 +46,8 @@
             haskellPackages.haskell-language-server # you must build it with your ghc to work
             ghcid
             cabal-install
-            nvim
+            # nvim
+            python3
           ];
           inputsFrom = map (__getAttr "env") (__attrValues self.packages.${system});
         };
